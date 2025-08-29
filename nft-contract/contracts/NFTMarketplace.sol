@@ -146,6 +146,9 @@ contract NFTMarketplace is ReentrancyGuard {
         isListed(nftAddress, tokenId)
         isOwner(nftAddress, tokenId, msg.sender)
     {
+        if (newPrice <= 0) {
+            revert NFTMarketplace__PriceMustBeAboveZero();
+        }
         s_listings[nftAddress][tokenId].price = newPrice;
         emit ItemListed(msg.sender, nftAddress, tokenId, newPrice);
     }
@@ -155,19 +158,21 @@ contract NFTMarketplace is ReentrancyGuard {
         if (proceeds <= 0) {
             revert NFTMarketplace__NoProceeds();
         }
-        s_proceeds[msg.sender] = 0;// Reerntrancy guard
+        s_proceeds[msg.sender] = 0; // Reerntrancy guard
 
         (bool success, ) = payable(msg.sender).call{value: proceeds}("");
-        if(!success){
+        if (!success) {
             revert NFTMarketplace__TransferFailed();
         }
     }
+
     function getListing(
         address nftAddress,
         uint256 tokenId
     ) external view returns (Listing memory) {
         return s_listings[nftAddress][tokenId];
     }
+
     function getProceeds(address seller) external view returns (uint256) {
         return s_proceeds[seller];
     }

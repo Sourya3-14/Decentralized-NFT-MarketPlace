@@ -15,6 +15,7 @@
     "@typechain/ethers-v6": "^0.5.0",
     "@typechain/hardhat": "^9.0.0",
     "chai": "^4.2.0",
+    "coverage": "^0.4.1",
     "dotenv": "^17.2.1",
     "ethers": "^6.4.0",
     "hardhat-deploy": "^1.0.4",
