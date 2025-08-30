@@ -1,0 +1,274 @@
+/* Navbar.css */
+
+/* ========== NAVBAR WRAPPER ========== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #0d1117;
+    /* dark theme */
+    color: #fff;
+    padding: 0.8rem 2rem;
+    border-bottom: 1px solid #30363d;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ========== BRAND ========== */
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.navbar-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #fff;
+    transition: color 0.2s ease;
+}
+
+.navbar-title:hover {
+    color: #58a6ff;
+}
+
+/* ========== NAV MENU ========== */
+.navbar-menu {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-item {
+    text-decoration: none;
+    font-size: 1rem;
+    color: #c9d1d9;
+    position: relative;
+    transition: color 0.2s ease;
+}
+
+.nav-item:hover {
+    color: #58a6ff;
+}
+
+.nav-item.active {
+    color: #58a6ff;
+    font-weight: 600;
+}
+
+.nav-item.active::after {
+    content: "";
+    display: block;
+    height: 2px;
+    background: #58a6ff;
+    margin-top: 3px;
+    border-radius: 2px;
+}
+
+/* ========== WALLET CONNECTOR ========== */
+.wallet-connector {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.connect-button,
+.disconnect-button {
+    background: #238636;
+    color: #fff;
+    border: none;
+    padding: 0.4rem 1rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.connect-button:hover {
+    background: #2ea043;
+}
+
+.disconnect-button {
+    background: #da3633;
+}
+
+.disconnect-button:hover {
+    background: #f85149;
+}
+
+.connected-wallet {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.wallet-address {
+    background: #161b22;
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    color: #c9d1d9;
+}
+
+.connection-indicator {
+    width: 10px;
+    height: 10px;
+    background: #2ea043;
+    border-radius: 50%;
+}
+
+/* ========== ERROR TOAST ========== */
+.error-toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #da3633;
+    color: #fff;
+    padding: 0.8rem 1rem;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.3s ease;
+}
+
+.error-close {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+/* ========== MODAL OVERLAY ========== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.65);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1100;
+    animation: fadeIn 0.2s ease;
+}
+
+.modal-content {
+    background: #161b22;
+    padding: 2rem;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 400px;
+    position: relative;
+    color: #fff;
+}
+
+.modal-title {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    color: #8b949e;
+    cursor: pointer;
+}
+
+.modal-close:hover {
+    color: #fff;
+}
+
+/* ========== WALLET OPTIONS GRID ========== */
+.wallet-grid {
+    display: grid;
+    gap: 0.8rem;
+}
+
+.wallet-option {
+    background: #21262d;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.wallet-option:hover {
+    background: #2d333b;
+    transform: translateY(-2px);
+}
+
+.wallet-icon {
+    font-size: 1.5rem;
+}
+
+.wallet-name {
+    font-weight: 500;
+    color: #fff;
+}
+
+/* ========== LOADING ========== */
+.connecting-status {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.loading-spinner {
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #58a6ff;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    animation: spin 1s linear infinite;
+}
+
+.loading-wallets {
+    text-align: center;
+    color: #8b949e;
+    font-size: 0.9rem;
+}
+
+/* ========== ANIMATIONS ========== */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+    .navbar-menu {
+        display: none;
+        /* could be converted to a hamburger later */
+    }
+}
